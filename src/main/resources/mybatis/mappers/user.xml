@@ -2,4 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
+
+	<!-- 회원가입 정보 insert -->
+	<insert id="" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			insert into users
+            values(seq_users_no.nextval, #{id}, #{userName}, #{password}, sysdate)
+        ]]>
+	</insert>
+
+	<!-- 로그인 위해 회원정보 조회 -->
+	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select userNo, id, userName
+			from users
+			where id = #{id}
+			and password = #{password}
+		]]>
+	</select>
+
 </mapper>

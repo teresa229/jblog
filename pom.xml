@@ -71,12 +71,6 @@
 	</dependencies>
 
 
-
-
-
-
-
-
 	<build>
 		<plugins>
 			<plugin>
