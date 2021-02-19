@@ -3,47 +3,47 @@ package com.javaex.vo;
 public class UserVo {
 	
 	//필드
-	private int UserNo;       //회원식별번호
-	private int id;           //아이디
-	private String UserName;  //회원이름
+	private int userNo;       //회원식별번호
+	private String id;           //아이디
+	private String userName;  //회원이름
 	private String password;  //패스워드
 	private int joinDate;     //가입일
 	
 	//생성자
 	public UserVo() {}
-		
-	public UserVo(int userNo, int id, String userName, String password, int joinDate) {
+
+	public UserVo(int userNo, String id, String userName, String password, int joinDate) {
 		super();
-		UserNo = userNo;
+		this.userNo = userNo;
 		this.id = id;
-		UserName = userName;
+		this.userName = userName;
 		this.password = password;
 		this.joinDate = joinDate;
 	}
 
 	//메소드 g/s
 	public int getUserNo() {
-		return UserNo;
+		return userNo;
 	}
 
 	public void setUserNo(int userNo) {
-		UserNo = userNo;
+		this.userNo = userNo;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
 	public String getUserName() {
-		return UserName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
-		UserName = userName;
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -62,11 +62,12 @@ public class UserVo {
 		this.joinDate = joinDate;
 	}
 
-	//메소드 일반
+	//메소드 기본
 	@Override
 	public String toString() {
-		return "UserVo [UserNo=" + UserNo + ", id=" + id + ", UserName=" + UserName + ", password=" + password
+		return "UserVo [userNo=" + userNo + ", id=" + id + ", userName=" + userName + ", password=" + password
 				+ ", joinDate=" + joinDate + "]";
-	}	
-
+	}
+	
+	
 }
