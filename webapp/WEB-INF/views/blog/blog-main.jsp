@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 
 <body>
@@ -21,13 +21,18 @@
 			<div id="profilecate_area">
 				<div id="profile">
 					
-					<!-- 기본이미지 -->
-					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+					<c:choose>
+						<c:when test="${blogVo.logoFile == null}">
+							<!-- 기본이미지 -->
+							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+						</c:when>
+						<c:choose>
+							<!-- 사용자업로드 이미지 -->
+							<img id="proImg" src="${pageContext.request.contextPath}/upload/${blogVo.logoFile}">
+						</c:choose>	
+					</c:choose>
 					
-					<!-- 사용자업로드 이미지 -->
-					<%-- <img id="proImg" src=""> --%>
-					
-					<div id="nick">정우성(hijava)님</div>
+					<div id="nick">${blogVo.userName}(${blogVo.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -38,7 +43,7 @@
 						<li><a href="$}">카테고리4</a></li>
 						<li><a href="$}">카테고리3</a></li>
 						<li><a href="$}">카테고리2</a></li>
-						<li><a href="$}">카테고리1</a></li>
+						<li><a href="$}">카테고리1</a></li> 
 						<li><a href="$}">미분류</a></li>
 						
 					</ul>
@@ -51,7 +56,7 @@
 				<div id="postBox" class="clearfix">
 						<div id="postTitle" class="text-left"><strong>08.페이징</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">정우성(hijava)님</div>
+						<div id="postNick">${blogVo.userName}(${blogVo.id})님</div>
 				</div>
 				<!-- //postBox -->
 			
