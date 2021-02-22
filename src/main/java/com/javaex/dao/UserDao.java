@@ -27,4 +27,12 @@ public class UserDao {
 		
 		return sqlSession.selectOne("user.selectUser", userVo);
 	}
+	
+	//아이디 체크 
+	public UserVo selectOne(String id) {
+		System.out.println("[UserDao]: selectOne");
+		System.out.println(id);
+		
+		return sqlSession.selectOne("user.selectById", id);
+	}
 }

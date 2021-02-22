@@ -5,8 +5,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
@@ -25,7 +28,7 @@ public class UserController {
 		
 		return "user/joinForm";
 	}
-	
+
 	//회원가입
 	@RequestMapping(value="/join", method= {RequestMethod.GET, RequestMethod.POST})
 	public String join(@ModelAttribute UserVo userVo) {
@@ -50,7 +53,7 @@ public class UserController {
 		System.out.println("[UserController]: login");
 		
 		UserVo authUser = userService.login(userVo);
-		
+
 		if(authUser!= null) { //성공
 			System.out.println("로그인 성공");
 			session.setAttribute("authUser", authUser);
@@ -71,5 +74,17 @@ public class UserController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	//회원 가입 아이디 체크
+	@ResponseBody
+	@RequestMapping(value="/checkid", method= {RequestMethod.GET, RequestMethod.POST})
+	public String checkid(@RequestParam("id") String id) {
+		System.out.println("[UserController]: checkid");
+		
+		String result = userService.checkId(id);
+		System.out.println(result);
+		
+		return result;
 	}
 }

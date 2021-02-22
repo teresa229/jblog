@@ -7,12 +7,12 @@ public class UserVo {
 	private String id;           //아이디
 	private String userName;  //회원이름
 	private String password;  //패스워드
-	private int joinDate;     //가입일
+	private String joinDate;     //가입일
 	
 	//생성자
 	public UserVo() {}
 
-	public UserVo(int userNo, String id, String userName, String password, int joinDate) {
+	public UserVo(int userNo, String id, String userName, String password, String joinDate) {
 		super();
 		this.userNo = userNo;
 		this.id = id;
@@ -54,11 +54,11 @@ public class UserVo {
 		this.password = password;
 	}
 
-	public int getJoinDate() {
+	public String getJoinDate() {
 		return joinDate;
 	}
 
-	public void setJoinDate(int joinDate) {
+	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
 

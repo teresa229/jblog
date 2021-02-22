@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.UserDao;
+import com.javaex.vo.BlogVo;
 import com.javaex.vo.UserVo;
 
 
@@ -20,6 +21,7 @@ public class UserService {
 		userDao.insert(userVo);
 		System.out.println(userVo.getId());
 		System.out.println(userVo.getUserName());
+		
 	}
 	
 	//로그인
@@ -29,4 +31,21 @@ public class UserService {
 		return userDao.selectUser(userVo);
 	}
 	
+	//아이디 체크
+	public String checkId(String id) {
+		System.out.println("[UserService]: checkId");
+		
+		UserVo userVo = userDao.selectOne(id);
+		//System.out.println(userVo);
+		
+		String result = "";
+		
+		if(userVo == null) {
+			result="can";
+		}else {
+			result="cant";
+		}
+		
+		return result;
+	}
 }
